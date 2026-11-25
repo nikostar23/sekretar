@@ -1,0 +1,15 @@
+services:
+  audio-bot:
+    build: .
+    image: audio-assistant-bot:latest
+    container_name: audio-assistant-bot
+    env_file:
+      - .env
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
